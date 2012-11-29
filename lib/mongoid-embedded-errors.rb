@@ -6,7 +6,10 @@ module Mongoid
   module EmbeddedErrors
 
     def self.included(klass)
-      klass.alias_method_chain(:errors, :embedded_errors)
+      # make sure that the alias only happens once:
+      unless klass.instance_methods.include?(:errors_without_embedded_errors)
+        klass.alias_method_chain(:errors, :embedded_errors)
+      end
     end
 
     def errors_with_embedded_errors
