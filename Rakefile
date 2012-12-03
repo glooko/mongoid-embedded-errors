@@ -2,8 +2,10 @@ require 'bundler'
 Bundler::GemHelper.install_tasks
 
 desc "Run tests"
-task :default => [:ruby]
+task :default => [:test]
 
-task :ruby do
+task :spec => [:test]
+
+task :test do
   system "bundle exec rspec"
 end
