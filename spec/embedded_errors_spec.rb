@@ -8,20 +8,20 @@ describe Mongoid::EmbeddedErrors do
   let(:valid_section) { Section.new(header: "My Header") }
 
   describe "errors" do
-  
+
     it "bubbles up errors from embedded documents" do
+      invalid_page.sections << valid_section
       invalid_page.sections << invalid_section
       article.pages << invalid_page
       article.should_not be_valid
-      puts article.errors.messages
       article.errors.messages.should eql({
-        name: ["can't be blank"], 
+        name: ["can't be blank"],
         summary: ["can't be blank"],
         pages: [{
-          invalid_page.id.to_s => {
+          0 => {
             title: ["can't be blank"],
             sections: [{
-              invalid_section.id.to_s => {
+              1 => {
                 header: ["can't be blank"]
               }
             }]
@@ -40,7 +40,7 @@ describe Mongoid::EmbeddedErrors do
       article.should_not be_valid
       article.errors.messages.should eql(name: ["can't be blank"], summary: ["can't be blank"])
     end
-  
+
   end
 
 end

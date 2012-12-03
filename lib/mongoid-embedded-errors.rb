@@ -17,8 +17,8 @@ module Mongoid
       self.embedded_relations.each do |name, metadata|
         if errs[name]
           errs.delete(name.to_sym)
-          self.send(name).each do |rel|
-            errs[name] = {rel.id.to_s => rel.errors.messages} if rel.errors.any?
+          self.send(name).each_with_index do |rel, i|
+            errs[name] = {i => rel.errors.messages} if rel.errors.any?
           end
         end
       end
