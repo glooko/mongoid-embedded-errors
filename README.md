@@ -84,7 +84,12 @@ article = Article.new(pages: [Page.new(sections: [Section.new])])
 article.valid? # => false
 
 article.error.messages
-# => {:name=>["can't be blank"], :summary=>["can't be blank"], :pages=>[{0=>{:title=>["can't be blank"], :sections=>[{0=>{:header=>["can't be blank"]}}]}}]}
+{
+  :name => ["can't be blank"], 
+  :summary => ["can't be blank"], 
+  :"pages[0].title" => ["can't be blank"], 
+  :"pages[0].sections[0].header" => ["can't be blank"]
+}
 ```
 
 Now, isn't that much nicer? Yeah, I think so to.

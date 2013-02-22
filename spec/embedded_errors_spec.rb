@@ -17,16 +17,8 @@ describe Mongoid::EmbeddedErrors do
       article.errors.messages.should eql({
         name: ["can't be blank"],
         summary: ["can't be blank"],
-        pages: [{
-          0 => {
-            title: ["can't be blank"],
-            sections: [{
-              1 => {
-                header: ["can't be blank"]
-              }
-            }]
-          }
-        }]
+        :"pages[0].title" => ["can't be blank"],
+        :"pages[0].sections[1].header" => ["can't be blank"]
       })
     end
 

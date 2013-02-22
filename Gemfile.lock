@@ -1,16 +1,16 @@
 PATH
   remote: .
   specs:
-    mongoid-embedded-errors (1.1.0)
+    mongoid-embedded-errors (2.0.0)
       mongoid (>= 3.0.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (3.2.9)
-      activesupport (= 3.2.9)
+    activemodel (3.2.12)
+      activesupport (= 3.2.12)
       builder (~> 3.0.0)
-    activesupport (3.2.9)
+    activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     builder (3.0.4)
@@ -22,9 +22,9 @@ GEM
       moped (~> 1.1)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
-    moped (1.2.7)
-    multi_json (1.4.0)
-    origin (1.0.9)
+    moped (1.4.2)
+    multi_json (1.6.1)
+    origin (1.0.11)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)

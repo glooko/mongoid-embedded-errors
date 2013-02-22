@@ -24,7 +24,12 @@ module Mongoid
           self.send(name).each_with_index do |rel, i|
             # get each of their individual message and add them to the parent's errors:
             if rel.errors.any?
-              errs[name] = rel.errors.messages
+              rel.errors.messages.each do |k, v|
+                key = "#{name}[#{i}].#{k}".to_sym
+                errs.delete(key)
+                errs[key] = v
+                errs[key].flatten!
+              end
             end
           end
         end
