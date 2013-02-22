@@ -15,10 +15,17 @@ module Mongoid
     def errors_with_embedded_errors
       errs = errors_without_embedded_errors
       self.embedded_relations.each do |name, metadata|
+        # name is something like pages or sections
+        # if there is an 'is invalid' message for the relation then let's work it:
         if errs[name]
+          # first delete the unless 'is invalid' error for the relation
           errs.delete(name.to_sym)
+          # next, loop through each of the relations (pages, sections, etc...)
           self.send(name).each_with_index do |rel, i|
-            errs[name] = {i => rel.errors.messages} if rel.errors.any?
+            # get each of their individual message and add them to the parent's errors:
+            if rel.errors.any?
+              errs[name] = rel.errors.messages
+            end
           end
         end
       end
