@@ -6,6 +6,7 @@ describe Mongoid::EmbeddedErrors do
   let(:invalid_page) { Page.new }
   let(:invalid_section) { Section.new }
   let(:valid_section) { Section.new(header: "My Header") }
+  let(:invalid_annotation){ Annotation.new }
 
   describe "errors" do
 
@@ -13,12 +14,14 @@ describe Mongoid::EmbeddedErrors do
       invalid_page.sections << valid_section
       invalid_page.sections << invalid_section
       article.pages << invalid_page
+      article.annotation = invalid_annotation
       article.should_not be_valid
       article.errors.messages.should eql({
         name: ["can't be blank"],
         summary: ["can't be blank"],
         :"pages[0].title" => ["can't be blank"],
-        :"pages[0].sections[1].header" => ["can't be blank"]
+        :"pages[0].sections[1].header" => ["can't be blank"],
+        :"annotation.text" => ["can't be blank"]
       })
     end
 

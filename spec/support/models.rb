@@ -10,6 +10,7 @@ class Article
   validates :summary, presence: true
 
   embeds_many :pages
+  embeds_one :annotation
 end
 
 class Page
@@ -34,4 +35,15 @@ class Section
   validates :header, presence: true
 
   embedded_in :page, inverse_of: :sections
+end
+
+class Annotation
+  include Mongoid::Document
+
+  embedded_in :article, inverse_of: :annotation
+
+  field :text, type: String
+
+  validates :text, presence: true
+
 end
