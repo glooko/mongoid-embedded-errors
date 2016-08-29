@@ -9,6 +9,8 @@ class Article
   validates :name, presence: true
   validates :summary, presence: true
 
+  has_many :illustrations
+  accepts_nested_attributes_for :illustrations
   embeds_many :pages
   embeds_one :annotation
 end
@@ -46,4 +48,14 @@ class Annotation
 
   validates :text, presence: true
 
+end
+
+class Illustration
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  field :image_url, type: String
+
+  validates :image_url, presence: true
+  belongs_to :article
 end
