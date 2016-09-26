@@ -45,5 +45,4 @@ class Annotation
   field :text, type: String
 
   validates :text, presence: true
-
 end
