@@ -102,8 +102,6 @@ Now, isn't that much nicer? Yeah, I think so to.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-## Contributers
+## Contributors
 
-* Mark Bates
-* Evgeniy Denisov
-* Nick Plante
+[See here](https://github.com/glooko/mongoid-embedded-errors/graphs/contributors)
