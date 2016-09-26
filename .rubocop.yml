@@ -9,6 +9,7 @@ AllCops:
   DisplayCopNames: true
   Exclude:
     - Guardfile
+    - bin/*
 
 Rails:
   Enabled: true
