@@ -24,7 +24,7 @@ describe Mongoid::EmbeddedErrors do
 
     it 'save works as before' do
       article.pages << valid_page
-      article.save.should be_false
+      expect(article.save).to be false
       article.should_not be_persisted
       article.errors.messages.should eql(
         name: ["can't be blank"], summary: ["can't be blank"]

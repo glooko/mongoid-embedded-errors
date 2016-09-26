@@ -7,6 +7,8 @@ AllCops:
   # by overriding DisplayCopNames, or by giving the -D/--display-cop-names
   # option.
   DisplayCopNames: true
+  Exclude:
+    - Guardfile
 
 Rails:
   Enabled: true
