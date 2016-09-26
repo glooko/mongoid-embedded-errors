@@ -1,18 +1,17 @@
 require 'mongoid'
-require 'mongoid-embedded-errors/version'
-require 'mongoid-embedded-errors/embedded_in'
+require 'mongoid/embedded_errors/version'
+require 'mongoid/embedded_errors/embedded_in'
 
-module Mongoid
-  module EmbeddedErrors
-    def self.included(klass)
-      # make sure that the alias only happens once:
-      unless klass.instance_methods.include?(:errors_without_embedded_errors)
-        klass.alias_method_chain(:errors, :embedded_errors)
-      end
+module Mongoid::EmbeddedErrors
+  def self.included(klass)
+    # make sure that the alias only happens once:
+    unless klass.instance_methods.include?(:errors_without_embedded_errors)
+      klass.alias_method_chain(:errors, :embedded_errors)
     end
+  end
 
-    def errors_with_embedded_errors
-      errs = errors_without_embedded_errors
+  def errors_with_embedded_errors
+    errors_without_embedded_errors.tap do |errs|
       embedded_relations.each do |name, metadata|
         # name is something like pages or sections
         # if there is an 'is invalid' message for the relation then let's work it:
@@ -32,7 +31,6 @@ module Mongoid
           end
         end
       end
-      errs
     end
   end
 end
