@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'mongoid_embedded_errors'
+require 'mongoid-embedded-errors'
 require 'database_cleaner'
 
 Mongoid.load!(File.join(File.dirname(__FILE__), 'config.yml'), :test)
