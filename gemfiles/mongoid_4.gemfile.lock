@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ../
   specs:
     mongoid-embedded-errors (2.0.1)
       mongoid (>= 3.0)
@@ -102,6 +102,7 @@ DEPENDENCIES
   appraisal
   database_cleaner
   guard-rspec
+  mongoid (~> 4.0)
   mongoid-embedded-errors!
   rspec
 

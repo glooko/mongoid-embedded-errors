@@ -39,7 +39,7 @@ describe Mongoid::EmbeddedErrors do
       )
     end
     it 'does not remove other validation errors from relational fields' do
-      article.validate
+      article.valid?
       expect(article.errors[:pages]).to include "can't be blank"
     end
   end

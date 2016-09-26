@@ -1,5 +1,12 @@
 test:
+  # mongoid 3 and 4
   sessions:
+    default:
+      database: mongoid_embedded_errors_test
+      hosts:
+        - localhost:27017
+  # mongoid 5 and newer
+  clients:
     default:
       database: mongoid_embedded_errors_test
       hosts:

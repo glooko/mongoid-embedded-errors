@@ -1,6 +1,6 @@
 # Mongoid::EmbeddedErrors
 
-Easily bubble up errors from embedded documents in Mongoid 4 and newer.
+Easily bubble up errors from embedded documents in Mongoid 3 and newer.
 
 ## Installation
 

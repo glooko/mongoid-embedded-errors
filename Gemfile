@@ -6,3 +6,4 @@ gemspec
 gem 'rspec'
 gem 'database_cleaner'
 gem 'guard-rspec'
+gem 'appraisal'

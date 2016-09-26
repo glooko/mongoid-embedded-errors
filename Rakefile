@@ -1,4 +1,6 @@
-require 'bundler'
+require 'rubygems'
+require 'bundler/setup'
+
 Bundler::GemHelper.install_tasks
 
 desc 'Run tests'

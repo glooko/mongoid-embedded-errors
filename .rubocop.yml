@@ -9,10 +9,15 @@ AllCops:
   DisplayCopNames: true
   Exclude:
     - Guardfile
+    - gemfiles/*
     - bin/*
 
 Rails:
   Enabled: true
+
+Style/FileName:
+  Exclude:
+    - Appraisals
 
 Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
