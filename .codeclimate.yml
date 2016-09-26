@@ -15,5 +15,3 @@ engines:
 ratings:
   paths:
   - Gemfile.lock
-exclude_paths:
-- spec/**/*
