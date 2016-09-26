@@ -1,8 +1,7 @@
-require 'spec_helper'
-
 describe Mongoid::EmbeddedErrors do
   let(:article) { Article.new }
   let(:invalid_page) { Page.new }
+  let(:valid_page) { Page.new title: 'test' }
   let(:invalid_section) { Section.new }
   let(:valid_section) { Section.new(header: 'My Header') }
   let(:invalid_annotation) { Annotation.new }
@@ -24,6 +23,7 @@ describe Mongoid::EmbeddedErrors do
     end
 
     it 'save works as before' do
+      article.pages << valid_page
       article.save.should be_false
       article.should_not be_persisted
       article.errors.messages.should eql(
@@ -33,8 +33,14 @@ describe Mongoid::EmbeddedErrors do
     it 'handles errors on the main object' do
       article.should_not be_valid
       article.errors.messages.should eql(
-        name: ["can't be blank"], summary: ["can't be blank"]
+        name: ["can't be blank"],
+        summary: ["can't be blank"],
+        pages: ["can't be blank"]
       )
+    end
+    it 'does not remove other validation errors from relational fields' do
+      article.validate
+      expect(article.errors[:pages]).to include "can't be blank"
     end
   end
 end

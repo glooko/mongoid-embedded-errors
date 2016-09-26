@@ -16,9 +16,10 @@ module Mongoid
       embedded_relations.each do |name, metadata|
         # name is something like pages or sections
         # if there is an 'is invalid' message for the relation then let's work it:
-        next unless errs[name]
+        next unless Array(public_send(name)).any?(&:invalid?)
         # first delete the unless 'is invalid' error for the relation
-        errs.delete(name.to_sym)
+        errs[name].delete 'is invalid'
+        errs.delete name.to_sym if errs[name].empty?
         # next, loop through each of the relations (pages, sections, etc...)
         [send(name)].flatten.reject(&:nil?).each_with_index do |rel, i|
           # get each of their individual message and add them to the parent's errors:

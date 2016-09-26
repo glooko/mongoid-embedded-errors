@@ -3,14 +3,15 @@ class Article
   include Mongoid::Timestamps
   include Mongoid::EmbeddedErrors
 
+  embeds_many :pages
+  embeds_one :annotation
+
   field :name, type: String
   field :summary, type: String
 
   validates :name, presence: true
   validates :summary, presence: true
-
-  embeds_many :pages
-  embeds_one :annotation
+  validates :pages, presence: true
 end
 
 class Page
