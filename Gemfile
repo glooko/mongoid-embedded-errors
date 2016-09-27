@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rspec'
+gem 'rake'
 gem 'database_cleaner'
 gem 'guard-rspec'
 gem 'appraisal'
