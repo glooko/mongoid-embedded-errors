@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mongoid-embedded-errors/version'
+require 'mongoid/embedded_errors/version'
 
 Gem::Specification.new do |gem|
   gem.name          = 'mongoid-embedded-errors'
   gem.version       = Mongoid::EmbeddedErrors::VERSION
-  gem.authors       = ['Mark Bates']
-  gem.email         = ['mark@markbates.com']
+  gem.authors       = ['Mark Bates', 'Kristijan Novoselić']
+  gem.email         = ['mark@markbates.com', 'kristijan@glooko.com']
   gem.description   = 'Easily bubble up errors from embedded '\
                       'documents in Mongoid.'
   gem.summary       = 'Easily bubble up errors from embedded '\
@@ -19,5 +19,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency('mongoid', '~> 4.0')
+  gem.add_dependency('mongoid', '>=3.0')
 end

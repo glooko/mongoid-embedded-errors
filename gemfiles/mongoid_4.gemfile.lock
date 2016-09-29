@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ../
   specs:
     mongoid-embedded-errors (2.0.1)
       mongoid (>= 3.0)
@@ -7,7 +7,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    abstract_type (0.0.7)
     activemodel (4.2.6)
       activesupport (= 4.2.6)
       builder (~> 3.1)
@@ -17,28 +16,16 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    adamantium (0.2.0)
-      ice_nine (~> 0.11.0)
-      memoizable (~> 0.4.0)
-    anima (0.3.0)
-      abstract_type (~> 0.0.7)
-      adamantium (~> 0.2)
-      equalizer (~> 0.0.11)
     appraisal (2.1.0)
       bundler
       rake
       thor (>= 0.14.0)
-    ast (2.3.0)
     bson (3.2.6)
     builder (3.2.2)
     coderay (1.1.1)
-    concord (0.1.5)
-      adamantium (~> 0.2.0)
-      equalizer (~> 0.0.9)
     connection_pool (2.2.0)
     database_cleaner (1.5.3)
     diff-lcs (1.2.5)
-    equalizer (0.0.11)
     ffi (1.9.14)
     formatador (0.2.5)
     guard (2.14.0)
@@ -56,15 +43,12 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     i18n (0.7.0)
-    ice_nine (0.11.2)
     json (1.8.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     lumberjack (1.0.10)
-    memoizable (0.4.2)
-      thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     minitest (5.9.0)
     mongoid (4.0.2)
@@ -76,44 +60,12 @@ GEM
       bson (~> 3.0)
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
-    morpher (0.2.6)
-      abstract_type (~> 0.0.7)
-      adamantium (~> 0.2.0)
-      anima (~> 0.3.0)
-      ast (~> 2.2)
-      concord (~> 0.1.5)
-      equalizer (~> 0.0.9)
-      ice_nine (~> 0.11.0)
-      procto (~> 0.0.2)
-    mutant (0.8.11)
-      abstract_type (~> 0.0.7)
-      adamantium (~> 0.2.0)
-      anima (~> 0.3.0)
-      ast (~> 2.2)
-      concord (~> 0.1.5)
-      diff-lcs (~> 1.2)
-      equalizer (~> 0.0.9)
-      ice_nine (~> 0.11.1)
-      memoizable (~> 0.4.2)
-      morpher (~> 0.2.6)
-      parallel (~> 1.3)
-      parser (~> 2.3.0, >= 2.3.0.2)
-      procto (~> 0.0.2)
-      regexp_parser (~> 0.3.6)
-      unparser (~> 0.2.5)
-    mutant-rspec (0.8.11)
-      mutant (~> 0.8.11)
-      rspec-core (>= 3.4.0, < 3.6.0)
     nenv (0.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
     optionable (0.2.0)
     origin (2.2.0)
-    parallel (1.9.0)
-    parser (2.3.1.4)
-      ast (~> 2.2)
-    procto (0.0.3)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -122,7 +74,6 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    regexp_parser (0.3.6)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -143,14 +94,6 @@ GEM
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    unparser (0.2.5)
-      abstract_type (~> 0.0.7)
-      adamantium (~> 0.2.0)
-      concord (~> 0.1.5)
-      diff-lcs (~> 1.2.5)
-      equalizer (~> 0.0.9)
-      parser (~> 2.3.0)
-      procto (~> 0.0.2)
 
 PLATFORMS
   ruby
@@ -159,10 +102,9 @@ DEPENDENCIES
   appraisal
   database_cleaner
   guard-rspec
+  mongoid (~> 4.0)
   mongoid-embedded-errors!
-  mutant-rspec
-  rake
   rspec
 
 BUNDLED WITH
-   1.13.1
+   1.12.5
