@@ -15,7 +15,7 @@ module Mongoid::EmbeddedErrors
       embedded_relations.each do |name, metadata|
         # name is something like pages or sections
         # if there is an 'is invalid' message for the relation then let's work it:
-        next unless Array(public_send(name)).any?(&:invalid?)
+        next unless Array(public_send(name)).any? { |doc| doc.errors.any? }
         # first delete the unless 'is invalid' error for the relation
         errs[name].delete 'is invalid'
         errs.delete name.to_sym if errs[name].empty?

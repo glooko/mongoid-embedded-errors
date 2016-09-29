@@ -27,5 +27,12 @@ RSpec.describe Mongoid::EmbeddedErrors do
 
       it { is_expected.to be_valid }
     end
+    context 'when embedded document has not been validated', :do_not_validate do
+      let(:pages) { [Page.new] }
+
+      it 'does not trigger validations' do
+        expect(article.errors).to be_empty
+      end
+    end
   end
 end
