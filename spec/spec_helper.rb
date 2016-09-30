@@ -3,7 +3,9 @@ require 'mongoid-embedded-errors'
 require 'database_cleaner'
 
 current_path = File.dirname(__FILE__)
-Dir[File.join(current_path, 'support/**/*.rb')].each { |f| require f }
+SPEC_MODELS_PATH = File.join(current_path, 'support/**/*.rb').freeze
+Dir[SPEC_MODELS_PATH].each { |f| require f }
+
 Mongoid.load! File.join(current_path, 'support/mongoid.yml'), :test
 
 RSpec.configure do |config|
@@ -27,5 +29,15 @@ RSpec.configure do |config|
 
   config.around(:each) do |example|
     DatabaseCleaner.cleaning { example.run }
+  end
+
+  config.before(:each) do
+    # Need to manually reload spec models for mutant to work as expected
+    if ENV['MUTANT']
+      Dir[SPEC_MODELS_PATH].each do |filename|
+        Object.send(:remove_const, File.basename(filename, '.rb').capitalize)
+        load filename
+      end
+    end
   end
 end
