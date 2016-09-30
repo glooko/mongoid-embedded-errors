@@ -6,8 +6,8 @@ Bundler::GemHelper.install_tasks
 desc 'Run tests'
 task default: [:test]
 
+desc 'Run tests'
 task spec: [:test]
 
-task :test do
-  system 'bundle exec rspec'
-end
+desc 'Run tests'
+task(:test) { system 'bundle exec rspec' }
