@@ -6,7 +6,8 @@ module Mongoid::EmbeddedErrors
   def self.included(klass)
     # make sure that the alias only happens once:
     unless klass.instance_methods.include?(:errors_without_embedded_errors)
-      klass.alias_method_chain(:errors, :embedded_errors)
+      klass.send :alias_method, :errors_without_embedded_errors, :errors
+      klass.send :alias_method, :errors, :errors_with_embedded_errors
     end
   end
 
@@ -26,7 +27,7 @@ module Mongoid::EmbeddedErrors
           rel.errors.messages.each do |k, v|
             key = (metadata.relation == Mongoid::Relations::Embedded::Many ? "#{name}[#{i}].#{k}" : "#{name}.#{k}").to_sym
             errs.delete(key)
-            errs[key] = v
+            errs.add key, v.flatten
             errs[key].flatten!
           end
         end
