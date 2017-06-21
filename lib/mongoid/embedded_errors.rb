@@ -27,7 +27,7 @@ module Mongoid::EmbeddedErrors
           rel.errors.messages.each do |k, v|
             key = (metadata.relation == Mongoid::Relations::Embedded::Many ? "#{name}[#{i}].#{k}" : "#{name}.#{k}").to_sym
             errs.delete(key)
-            errs[key] = v
+            errs.add key, v.flatten
             errs[key].flatten!
           end
         end
