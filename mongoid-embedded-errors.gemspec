@@ -5,7 +5,7 @@ require 'mongoid/embedded_errors/version'
 
 Gem::Specification.new do |gem|
   gem.name          = 'mongoid-embedded-errors'
-  gem.version       = Mongoid::EmbeddedErrors::VERSION
+  gem.version       = Mongoid::EmbeddedErrors::VERSION.dup
   gem.authors       = ['Mark Bates', 'Kristijan Novoselić']
   gem.email         = ['mark@markbates.com', 'kristijan@glooko.com']
   gem.description   = 'Easily bubble up errors from embedded '\

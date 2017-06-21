@@ -17,3 +17,4 @@ profile
 .rake_tasks~
 *.log.lck
 solr/
+bin/
