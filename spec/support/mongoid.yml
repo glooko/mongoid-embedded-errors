@@ -1,5 +1,5 @@
 test:
-  # mongoid 3 and 4
+  # mongoid 4
   sessions:
     default:
       database: mongoid_embedded_errors_test
