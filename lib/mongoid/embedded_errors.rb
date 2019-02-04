@@ -2,6 +2,7 @@ require 'mongoid'
 require 'mongoid/embedded_errors/version'
 require 'mongoid/embedded_errors/embedded_in'
 
+
 module Mongoid::EmbeddedErrors
   def self.included(klass)
     # make sure that the alias only happens once:
@@ -25,7 +26,12 @@ module Mongoid::EmbeddedErrors
           # get each of their individual message and add them to the parent's errors:
           next unless rel.errors.any?
           rel.errors.messages.each do |k, v|
-            key = (metadata.class == Mongoid::Association::Embedded::EmbedsMany ? "#{name}[#{i}].#{k}" : "#{name}.#{k}").to_sym
+            relation = if Mongoid::Compatibility::Version.mongoid7_or_newer?
+              metadata.class
+            else
+              metadata.relation
+            end
+            key = (relation ==  EMBEDS_MANY ? "#{name}[#{i}].#{k}" : "#{name}.#{k}").to_sym
             errs.delete(key)
             errs.add key, v.flatten
             errs[key].flatten!
