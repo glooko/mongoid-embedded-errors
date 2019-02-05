@@ -21,5 +21,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('mongoid', '>=4.0', '<8.0.0')
   gem.add_dependency 'mongoid-compatibility'
+  gem.add_dependency 'rubocop-rspec'
+  gem.add_dependency 'rubocop'
 
 end

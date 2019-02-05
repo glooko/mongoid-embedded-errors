@@ -1,0 +1,45 @@
+version: v1.0
+name: First pipeline example
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: Setup
+    task:
+      jobs:
+        - name: bundle
+          commands:
+          - checkout
+          # Set Ruby version:
+          - sem-version ruby 2.5.3
+          # Install dependencies
+          - bundle install
+          - bundle update
+          # Start MongoDB
+          - sem-service start mongodb
+
+  - name: "Unit tests"
+    task:
+      jobs:
+      - name: RSpec
+        commands:
+          - checkout
+          - bundle update
+          - sem-service start mongodb
+          - bundle exec rspec
+          
+  - name: Code scaning
+    task:
+      jobs:
+      - name: Rubocop
+        commands:
+          - checkout
+          - bundle update
+          - sem-service start mongodb
+          - bundle exec rubocop
+
+
+ 
+  
