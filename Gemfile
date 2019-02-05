@@ -4,10 +4,10 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
-  gem 'rspec'
-  gem 'rake'
+  gem 'appraisal'
   gem 'database_cleaner'
   gem 'guard-rspec'
-  gem 'appraisal'
   gem 'mutant-rspec'
+  gem 'rake'
+  gem 'rspec'
 end

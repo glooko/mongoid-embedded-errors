@@ -27,11 +27,11 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.around(:each) do |example|
+  config.around do |example|
     DatabaseCleaner.cleaning { example.run }
   end
 
-  config.before(:each) do
+  config.before do
     # Need to manually reload spec models for mutant to work as expected
     if ENV['MUTANT']
       Dir[SPEC_MODELS_PATH].each do |filename|
@@ -41,5 +41,3 @@ RSpec.configure do |config|
     end
   end
 end
-
-

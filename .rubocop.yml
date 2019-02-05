@@ -15,11 +15,11 @@ AllCops:
 Rails:
   Enabled: true
 
-Style/FileName:
+Naming/FileName:
   Exclude:
     - Appraisals
 
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
   EnforcedStyleForEmptyBraces: no_space
   SupportedStyles:
@@ -28,10 +28,16 @@ Style/SpaceInsideHashLiteralBraces:
 
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
-  Max: 15
+  Max: 40
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 40
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Max: 50
 
 Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
@@ -51,7 +57,7 @@ Style/MethodCalledOnDoEndBlock:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#single-line-blocks'
   Enabled: true
 
-Style/ExtraSpacing:
+Layout/ExtraSpacing:
   Description: 'Do not use unnecessary spacing.'
   Enabled: true
 
