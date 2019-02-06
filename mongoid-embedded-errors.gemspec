@@ -1,5 +1,4 @@
-# -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'mongoid/embedded_errors/version'
 
@@ -19,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
+  gem.add_dependency('ffi', '>= 1.9.24')
   gem.add_dependency('mongoid', '>=4.0', '<8.0.0')
-  gem.add_dependency 'mongoid-compatibility'
-
+  gem.add_dependency('mongoid-compatibility')
 end

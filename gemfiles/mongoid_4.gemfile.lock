@@ -2,6 +2,7 @@ PATH
   remote: ..
   specs:
     mongoid-embedded-errors (2.0.1)
+      ffi (>= 1.9.24)
       mongoid (>= 4.0, < 8.0.0)
       mongoid-compatibility
 

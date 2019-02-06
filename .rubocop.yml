@@ -15,11 +15,11 @@ AllCops:
 Rails:
   Enabled: true
 
-Style/FileName:
+Naming/FileName:
   Exclude:
     - Appraisals
 
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
   EnforcedStyleForEmptyBraces: no_space
   SupportedStyles:
@@ -51,7 +51,7 @@ Style/MethodCalledOnDoEndBlock:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#single-line-blocks'
   Enabled: true
 
-Style/ExtraSpacing:
+Layout/ExtraSpacing:
   Description: 'Do not use unnecessary spacing.'
   Enabled: true
 
