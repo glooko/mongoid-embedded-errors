@@ -3,7 +3,6 @@ PATH
   specs:
     mongoid-embedded-errors (2.0.1)
       mongoid (>= 4.0, < 8.0.0)
-      mongoid-compatibility
       rubocop
       rubocop-rspec
 
@@ -73,9 +72,6 @@ GEM
     mongoid (7.0.2)
       activemodel (>= 5.1, < 6.0.0)
       mongo (>= 2.5.1, < 3.0.0)
-    mongoid-compatibility (0.5.1)
-      activesupport
-      mongoid (>= 2.0)
     morpher (0.2.6)
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2.0)
@@ -174,4 +170,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   1.17.1
+   1.17.3

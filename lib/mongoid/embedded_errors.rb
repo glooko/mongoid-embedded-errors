@@ -26,7 +26,7 @@ module Mongoid::EmbeddedErrors
           next unless rel.errors.any?
 
           rel.errors.messages.each do |k, v|
-            relation = if Mongoid::Compatibility::Version.mongoid7_or_newer?
+            relation = if Gem::Version.new(Mongoid::VERSION) >= Gem::Version.new('7.0.0')
                          metadata.class
                        else
                          metadata.relation
