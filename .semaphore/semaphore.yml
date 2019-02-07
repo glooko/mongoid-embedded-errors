@@ -1,0 +1,28 @@
+version: v1.0
+name: mongoid-embedded-errors
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: Code scaning
+    task:
+      jobs:
+      - name: Rubocop
+        commands:
+          - checkout
+          - bundle check || bundle install
+          - sem-service start mongodb
+          - bundle exec rubocop
+
+  - name: "Unit tests"
+    task:
+      jobs:
+      - name: Appraisal
+        commands:
+          - checkout 
+          - bundle check || bundle install
+          - sem-service start mongodb
+          - bundle exec appraisal install
+          - bundle exec appraisal rake test
