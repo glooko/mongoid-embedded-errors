@@ -11,6 +11,7 @@ AllCops:
     - Guardfile
     - gemfiles/*
     - bin/*
+    - vendor/bundle/*
 
 Rails:
   Enabled: true
