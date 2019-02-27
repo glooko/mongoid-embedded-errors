@@ -1,5 +1,7 @@
 ---
-engines:
+version: "2"
+
+plugins:
   rubocop:
     enabled: true
   bundler-audit:
@@ -8,10 +10,11 @@ engines:
     enabled: true
   duplication:
     enabled: true
+  reek:
+    enabled: true
+  git-legal:
+    enabled: true
+
     config:
       languages:
       - ruby
-      - javascript
-ratings:
-  paths:
-  - Gemfile.lock
