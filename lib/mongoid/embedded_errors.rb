@@ -13,7 +13,6 @@ module Mongoid::EmbeddedErrors
   def errors_with_embedded_errors
     errors_without_embedded_errors.tap do |errs|
       embedded_relations.each do |name, metadata|
-        # name is something like pages or sections
         # first delete the unless 'is invalid' error for the relation
         errs[name].delete 'is invalid'
         # next, loop through each of the relations (pages, sections, etc...)

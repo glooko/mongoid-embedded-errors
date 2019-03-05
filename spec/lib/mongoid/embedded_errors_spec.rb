@@ -39,7 +39,13 @@ RSpec.describe Mongoid::EmbeddedErrors do
       it 'returns all errors for `pages[0]` object' do
         expect(article.errors[:'pages[0].title']).to include "can't be blank"
       end
-      it "returns `can't be blank` error for `pages[0]` object" do
+    end
+
+    context 'when validated multiple times' do
+      let(:pages) { [Page.new] }
+
+      it 'does not have duplicated errors for the same object' do
+        article.valid?
         expect(article.errors[:'pages[0].title']).to eq(["can't be blank"])
       end
     end
