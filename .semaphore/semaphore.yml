@@ -32,3 +32,15 @@ blocks:
           - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
           - sem-service start mongodb
           - MUTANT=true bundle exec mutant --since "$SEMAPHORE_GIT_SHA~1" --include lib --require mongoid --use rspec "Mongoid::EmbeddedErrors*"
+
+  - name: Code Climate
+    task:
+      jobs:
+      - name: Code Climate
+        commands: 
+          - checkout 
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
+          - bundle install --path vendor/bundle
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+          - docker run   --interactive --tty --rm   --env CODECLIMATE_CODE="$PWD"  --volume "$PWD":/code   --volume /tmp/cc:/tmp/cc   --volume /var/run/docker.sock:/var/run/docker.sock   codeclimate/codeclimate analyze
+
