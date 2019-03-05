@@ -6,23 +6,14 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: Code scaning
+  - name: Code Climate
     task:
       jobs:
-      - name: Rubocop
-        commands:
-          - checkout
-          - bundle check || bundle install
-          - sem-service start mongodb
-          - bundle exec rubocop
-
-  - name: "Unit tests"
-    task:
-      jobs:
-      - name: Appraisal
-        commands:
+      - name: Code Climate
+        commands: 
           - checkout 
-          - bundle check || bundle install
-          - sem-service start mongodb
-          - bundle exec appraisal install
-          - bundle exec appraisal rake test
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
+          - bundle install --path vendor/bundle
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+          - docker run   --interactive --tty --rm   --env CODECLIMATE_CODE="$PWD"  --volume "$PWD":/code   --volume /tmp/cc:/tmp/cc   --volume /var/run/docker.sock:/var/run/docker.sock   codeclimate/codeclimate analyze
+
