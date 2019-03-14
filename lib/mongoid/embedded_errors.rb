@@ -6,8 +6,8 @@ module Mongoid::EmbeddedErrors
   def self.included(klass)
     return if klass.instance_methods.include?(:errors_without_embedded_errors)
 
-    klass.public_send :alias_method, :errors_without_embedded_errors, :errors
-    klass.public_send :alias_method, :errors, :errors_with_embedded_errors
+    klass.send :alias_method, :errors_without_embedded_errors, :errors
+    klass.send :alias_method, :errors, :errors_with_embedded_errors
   end
 
   def errors_with_embedded_errors
