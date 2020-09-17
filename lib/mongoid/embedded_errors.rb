@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'mongoid'
 require 'mongoid/embedded_errors/version'
 require 'mongoid/embedded_errors/embedded_in'
