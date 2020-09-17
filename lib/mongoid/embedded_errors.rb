@@ -25,7 +25,11 @@ module Mongoid::EmbeddedErrors
 
           # get each of their individual message and add them to the parent's errors:
           rel.errors.each do |k, v|
-            relation = metadata.class
+            relation = if Gem::Version.new(Mongoid::VERSION) >= Gem::Version.new('7.0.0')
+                         metadata.class
+                       else
+                         metadata.relation
+                       end
             key = if relation.equal? EMBEDS_MANY
                     "#{name}[#{i}].#{k}"
                   else

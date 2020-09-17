@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mongoid-embedded-errors (3.0.0)
+    mongoid-embedded-errors (2.1.0)
       mongoid (>= 4.0, < 8.0.0)
       rubocop
       rubocop-rspec
