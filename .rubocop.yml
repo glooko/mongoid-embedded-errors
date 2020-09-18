@@ -13,9 +13,6 @@ AllCops:
     - bin/*
     - vendor/bundle/*
 
-Rails:
-  Enabled: true
-
 Naming/FileName:
   Exclude:
     - Appraisals

@@ -13,9 +13,11 @@ module Mongoid::EmbeddedErrors
   def errors_with_embedded_errors
     errors_without_embedded_errors.tap do |errs|
       embedded_relations.each do |name, metadata|
-        # first delete the unless 'is invalid' error for the relation
+        # name is something like pages or sections
+        # if there is an 'is invalid' message for the relation then let's work it:
         next unless Array(public_send(name)).any? { |doc| doc.errors.any? }
 
+        # first delete the unless 'is invalid' error for the relation
         errs[name].delete 'is invalid'
         errs.delete name.to_sym if errs[name].empty?
 
@@ -36,7 +38,7 @@ module Mongoid::EmbeddedErrors
                     "#{name}.#{k}"
                   end.to_sym
             errs.delete(key)
-            errs.add key, v if v.present?
+            errs.add key, v
           end
         end
       end

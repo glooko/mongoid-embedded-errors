@@ -18,7 +18,9 @@ RSpec.describe Mongoid::EmbeddedErrors do
         a = dummy_class.instance_method(:errors_without_embedded_errors)
         dummy_class.include described_class
 
-        expect(a).to eq(dummy_class.instance_method(:errors_without_embedded_errors))
+        expect(
+          a
+        ).to eq(dummy_class.instance_method(:errors_without_embedded_errors))
       end
     end
 
@@ -75,7 +77,8 @@ RSpec.describe Mongoid::EmbeddedErrors do
       end
     end
 
-    context 'when embedded document has not been validated', :do_not_validate do
+    context 'when embedded document has not been validated',
+            :do_not_validate do
       let(:pages) { [Page.new] }
 
       it 'does not trigger validations' do
