@@ -40,7 +40,7 @@ module Mongoid::EmbeddedErrors
                     "#{name}.#{k}"
                   end.to_sym
             errs.delete(key)
-            errs.add key, v
+            errs.add key, v if v.present?
           end
         end
       end
