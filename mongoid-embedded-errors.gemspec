@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
   gem.summary       = 'Easily bubble up errors from embedded '\
                       'documents in Mongoid.'
   gem.homepage      = 'https://github.com/glooko/mongoid-embedded-errors'
-
+  gem.licenses      = ['MIT']
   gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
