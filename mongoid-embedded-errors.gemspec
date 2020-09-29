@@ -26,7 +26,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency('mongoid', '>=4.0', '<8.0.0')
-  gem.add_development_dependency('rubocop', '~> 0.92')
-  gem.add_development_dependency('rubocop-rspec', '~> 1.43')
+  gem.add_dependency             'mongoid', '>=4.0', '<8.0.0'
+  gem.add_development_dependency 'rubocop', '~> 0.92'
+  gem.add_development_dependency 'rubocop-rspec', '~> 1.43'
 end
