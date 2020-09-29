@@ -62,7 +62,7 @@ If we were to create an invalid `Article` with an invalid `Page` and tried to va
 article = Article.new(pages: [Page.new])
 article.valid? # => false
 
-article.error.messages
+article.errors.messages
 # => {:name=>["can't be blank"], :summary=>["can't be blank"], :pages=>["is invalid"]}
 ```
 
@@ -84,7 +84,7 @@ end
 article = Article.new(pages: [Page.new(sections: [Section.new])])
 article.valid? # => false
 
-article.error.messages
+article.errors.messages
 {
   :name => ["can't be blank"],
   :summary => ["can't be blank"],

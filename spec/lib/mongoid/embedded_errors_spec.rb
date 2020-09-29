@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Mongoid::EmbeddedErrors do
   describe '#errors_with_embedded_errors' do
     subject(:article) { Article.new name: 'Test', summary: '-', pages: pages }
@@ -16,7 +18,9 @@ RSpec.describe Mongoid::EmbeddedErrors do
         a = dummy_class.instance_method(:errors_without_embedded_errors)
         dummy_class.include described_class
 
-        expect(a).to eq(dummy_class.instance_method(:errors_without_embedded_errors))
+        expect(
+          a
+        ).to eq(dummy_class.instance_method(:errors_without_embedded_errors))
       end
     end
 
@@ -24,6 +28,7 @@ RSpec.describe Mongoid::EmbeddedErrors do
       let(:pages) { [] }
 
       it { is_expected.not_to be_valid }
+
       it "returns `can't be blank` error for pages" do
         expect(article.errors[:pages]).to include "can't be blank"
       end
@@ -33,9 +38,11 @@ RSpec.describe Mongoid::EmbeddedErrors do
       let(:pages) { [Page.new] }
 
       it { is_expected.not_to be_valid }
+
       it 'does not have any errors under `:pages` key' do
         expect(article.errors[:pages]).to be_empty
       end
+
       it 'returns all errors for `pages[0]` object' do
         expect(article.errors[:'pages[0].title']).to include "can't be blank"
       end
@@ -70,7 +77,8 @@ RSpec.describe Mongoid::EmbeddedErrors do
       end
     end
 
-    context 'when embedded document has not been validated', :do_not_validate do
+    context 'when embedded document has not been validated',
+            :do_not_validate do
       let(:pages) { [Page.new] }
 
       it 'does not trigger validations' do
