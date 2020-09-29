@@ -9,9 +9,11 @@ AllCops:
   DisplayCopNames: true
   Exclude:
     - Guardfile
-    - gemfiles/*
+    - gemfiles/**/*
     - bin/*
-    - vendor/bundle/*
+    - vendor/bundle/**/*
+    - tmp/**/*
+  NewCops: enable
 
 Naming/FileName:
   Exclude:
@@ -31,7 +33,7 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Max: 40
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/BlockLength:
