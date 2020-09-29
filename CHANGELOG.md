@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-## [3.0.0] - 2017-06-20
+## [3.0.0] - 2020-09-29
 ### Added
 - Started 🔎 tracking changes in a changelog!
 - Mongoid 7 support
@@ -19,4 +19,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Removed .lock files as these are not supposed to be included with gem source code
 
 [Unreleased]: https://github.com/glooko/mongoid-embedded-errors/compare/v3.0.0...HEAD
-[3.0.0]: https://github.com/glooko/mongoid-embedded-errors/compare/v2.0.2...v3.0.0
+[3.0.0]: https://github.com/glooko/mongoid-embedded-errors/compare/f1ce0d8ed140de86c894b2fad7ad197504fefd5a...v3.0.0
