@@ -27,6 +27,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_dependency('mongoid', '>=4.0', '<8.0.0')
-  gem.add_development_dependency 'rubocop'
-  gem.add_development_dependency 'rubocop-rspec'
+  gem.add_development_dependency('rubocop', '~> 0.92')
+  gem.add_development_dependency('rubocop-rspec', '~> 1.43')
 end
