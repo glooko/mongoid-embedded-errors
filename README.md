@@ -1,7 +1,7 @@
 # Mongoid::EmbeddedErrors
 [![Code Climate](https://codeclimate.com/github/glooko/mongoid-embedded-errors/badges/gpa.svg)](https://codeclimate.com/github/glooko/mongoid-embedded-errors)
 
-Easily bubble up errors from embedded documents in Mongoid 3 and newer.
+Easily bubble up errors from embedded documents in Mongoid and newer.
 
 ## Installation
 
