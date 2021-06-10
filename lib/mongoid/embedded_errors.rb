@@ -28,19 +28,21 @@ module Mongoid::EmbeddedErrors
           next unless rel.errors.any?
 
           # get each of their individual message and add them to the parent's errors:
-          rel.errors.each do |k, v|
+          rel.errors.each do |error|
+            attribute = error.attribute
+            message = error.message
             relation = if Gem::Version.new(Mongoid::VERSION) >= Gem::Version.new('7.0.0')
                          metadata.class
                        else
                          metadata.relation
                        end
             key = if relation.equal? EMBEDS_MANY
-                    "#{name}[#{i}].#{k}"
+                    "#{name}[#{i}].#{attribute}"
                   else
-                    "#{name}.#{k}"
+                    "#{name}.#{attribute}"
                   end.to_sym
             errs.delete(key)
-            errs.add key, v if v.present?
+            errs.add key, message if message.present?
           end
         end
       end
