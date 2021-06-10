@@ -2,7 +2,7 @@
 
 require 'bundler/setup'
 require 'mongoid-embedded-errors'
-require 'database_cleaner'
+require 'database_cleaner-mongoid'
 
 current_path = File.dirname(__FILE__)
 SPEC_MODELS_PATH = File.join(current_path, 'support/**/*.rb').freeze
@@ -24,14 +24,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
   config.disable_monkey_patching!
-
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.around do |example|
-    DatabaseCleaner.cleaning { example.run }
-  end
 
   config.before do
     # Need to manually reload spec models for mutant to work as expected
