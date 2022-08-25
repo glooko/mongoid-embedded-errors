@@ -4,10 +4,13 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
+  gem 'rake'
+end
+
+group :test do
   gem 'appraisal'
-  gem 'database_cleaner'
+  gem 'database_cleaner-mongoid', '~> 2.0', '>= 2.0.1'
   gem 'guard-rspec'
   gem 'mutant-rspec'
-  gem 'rake'
   gem 'rspec'
 end
